@@ -1,0 +1,27 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=3
+
+[application]
+
+config/name="Pixel Trail Shader"
+run/main_scene="res://TrailTest.tscn"
+config/icon="res://icon.png"
+
+[display]
+
+window/size/width=320
+window/size/height=240
+window/size/test_width=680
+window/size/test_height=480
+window/stretch/mode="viewport"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
