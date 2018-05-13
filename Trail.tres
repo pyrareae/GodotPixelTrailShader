@@ -4,10 +4,7 @@
 
 code = "shader_type canvas_item;
 
-uniform float scatter_range = 0;
-uniform float mult = 1.0;
 uniform float trail = 0.9;
-//uniform vec4 bg_color = 
 
 float rand(inout float seed, vec2 uv){
 	vec2 co = uv * seed;
@@ -19,29 +16,12 @@ float rand(inout float seed, vec2 uv){
 void fragment() {
 	float seed = TIME;
 	vec2 co = SCREEN_UV;
-	vec2 pixel_size = 1.0 / vec2(textureSize(SCREEN_TEXTURE, 0));
     vec4 scr = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0);
 	vec4 last = texture(TEXTURE, UV);
-	vec2 px_range = pixel_size;
-	////scatter////
-	px_range *= scatter_range;
-	if (rand(seed, co) < 0.3) {
-		vec2 offset = vec2(
-			mix(-px_range.x, px_range.x, rand(seed, co)),
-			mix(-px_range.y, px_range.y, rand(seed, co))
-		);
-    	vec4 offset_c = textureLod(SCREEN_TEXTURE, SCREEN_UV+offset, 0.0);
-
-	    scr = offset_c;
-
-    	COLOR = offset_c;
-	} else {
-		COLOR = scr * mult;
-	}
-	////trail///
 	if (rand(seed, UV) < trail) {
 		COLOR = last;
-	}
+	} else 
+		COLOR = scr;
 }
 "
 _sections_unfolded = [ "Resource" ]
@@ -50,8 +30,6 @@ _sections_unfolded = [ "Resource" ]
 
 render_priority = 0
 shader = SubResource( 1 )
-shader_param/scatter_range = 5.0
-shader_param/mult = null
 shader_param/trail = null
 _sections_unfolded = [ "shader_param" ]
 
