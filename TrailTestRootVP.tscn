@@ -3,50 +3,49 @@
 [ext_resource path="res://TrailCircle.tres" type="Material" id=1]
 [ext_resource path="res://BubbleParticle.png" type="Texture" id=2]
 
-[sub_resource type="GDScript" id=10]
+[sub_resource type="GDScript" id=1]
 
 script/source = "extends Node
 
 func _ready():
-#	$Buffer.size = get_viewport().size
-#	$MixCopy2.texture.viewport_path = \"/root\"
+	#Setup the proper node paths on init for a slightly less aweful editor preview.
 	$Buffer/Copy.texture.viewport_path = \"/root\"
 
 func _input(event):
 	if event is InputEventMouseMotion:
 		$MouseBox.rect_position = event.position - $MouseBox.rect_size/2"
 
-[sub_resource type="ViewportTexture" id=11]
+[sub_resource type="ViewportTexture" id=2]
 
 resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("Buffer")
 
-[sub_resource type="Curve" id=2]
+[sub_resource type="Curve" id=3]
 
 min_value = 0.0
 max_value = 1.0
 bake_resolution = 100
 _data = [ Vector2( 0.00786383, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.995053, 0.972656 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=3]
+[sub_resource type="CurveTexture" id=4]
 
 flags = 4
 width = 2048
-curve = SubResource( 2 )
+curve = SubResource( 3 )
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=5]
 
 offsets = PoolRealArray( 0, 0.508876, 1 )
 colors = PoolColorArray( 0.839844, 0.330678, 0.082016, 1, 0.96875, 0.90501, 0.385986, 1, 0.981101, 0.565247, 0.984375, 1 )
 
-[sub_resource type="GradientTexture" id=5]
+[sub_resource type="GradientTexture" id=6]
 
 flags = 4
-gradient = SubResource( 4 )
+gradient = SubResource( 5 )
 width = 2048
 
-[sub_resource type="ParticlesMaterial" id=6]
+[sub_resource type="ParticlesMaterial" id=7]
 
 render_priority = 0
 trail_divisor = 1
@@ -76,18 +75,18 @@ angle = 0.0
 angle_random = 0.0
 scale = 1.0
 scale_random = 0.0
-color_ramp = SubResource( 5 )
+color_ramp = SubResource( 6 )
 hue_variation = 0.0
 hue_variation_random = 1.0
 anim_speed = 0.0
 anim_speed_random = 0.0
 anim_offset = 0.0
 anim_offset_random = 0.0
-anim_offset_curve = SubResource( 3 )
+anim_offset_curve = SubResource( 4 )
 anim_loop = false
 _sections_unfolded = [ "Animation", "Color", "Emission Shape", "Gravity", "Hue Variation", "Initial Velocity", "Scale", "Spread", "Trail" ]
 
-[sub_resource type="ViewportTexture" id=12]
+[sub_resource type="ViewportTexture" id=8]
 
 resource_local_to_scene = true
 flags = 0
@@ -95,7 +94,7 @@ viewport_path = NodePath("..")
 
 [node name="Node" type="Node" index="0"]
 
-script = SubResource( 10 )
+script = SubResource( 1 )
 
 [node name="BGcolor" type="ColorRect" parent="." index="0"]
 
@@ -124,7 +123,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = SubResource( 11 )
+texture = SubResource( 2 )
 expand = true
 stretch_mode = 0
 _sections_unfolded = [ "Material", "Size Flags" ]
@@ -146,7 +145,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 6 )
+process_material = SubResource( 7 )
 texture = ExtResource( 2 )
 normal_map = null
 h_frames = 7
@@ -210,7 +209,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = SubResource( 12 )
+texture = SubResource( 8 )
 expand = true
 stretch_mode = 0
 

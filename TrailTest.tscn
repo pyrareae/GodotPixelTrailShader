@@ -7,9 +7,6 @@
 
 script/source = "extends Node
 
-func _ready():
-	$ViewportRender2.texture.viewport_path = \"/root\"
-
 func _input(event):
 	if event is InputEventMouseMotion:
 		$Viewport/MouseBox.rect_position = event.position - $Viewport/MouseBox.rect_size/2"
@@ -97,7 +94,7 @@ resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("Viewport")
 
-[node name="Node" type="Node"]
+[node name="Node" type="Node" index="0"]
 
 script = SubResource( 1 )
 
