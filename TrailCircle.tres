@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://TrailCircle.shader" type="Shader" id=1]
+
+[resource]
+
+render_priority = 0
+shader = ExtResource( 1 )
+shader_param/blend = null
+shader_param/circle_count = 200
+shader_param/circle_thickness = 3
+shader_param/circle_radius = 0.02
+shader_param/radius_range = 4.0
+shader_param/box = true
+_sections_unfolded = [ "shader_param" ]
+
